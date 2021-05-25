@@ -104,7 +104,7 @@
             ProjectUri                 = 'https://prod1gitlab.mapcom.local/dsc/configurations/WebServerTasks.git'
 
             # A URL to an icon representing this module.
-            # IconUri = ''
+            IconUri = 'https://dsccommunity.org/images/DSC_Logo_300p.png'
 
             # ReleaseNotes of this module
             # ReleaseNotes = ''
