@@ -23,7 +23,8 @@ configuration WebConfigProperties {
             $item.Ensure = 'Present'
         }
 
-        $executionName = $item.PropertyName
+        $executionName = "$($item.PropertyName -replace '[-().:\s]', '_')"
+        
         (Get-DscSplattedResource -ResourceName xWebConfigProperty -ExecutionName $executionName -Properties $item -NoInvoke).Invoke($item)
     }
 }

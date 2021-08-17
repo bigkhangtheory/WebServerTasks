@@ -19,7 +19,7 @@
     Datum                        = 'latest'
     # Module to manage Hierachical Configuration Data
 
-    'Datum.InvokeCommand'       = 'latest'
+    'Datum.InvokeCommand'        = 'latest'
     # Datum Handler module to encrypt and decrypt secrets in Datum using Dave Wyatt's ProtectedData module
 
     'Datum.ProtectedData'        = 'latest'
@@ -28,7 +28,7 @@
     DscBuildHelpers              = 'latest'
     # Build Helpers for DSC Resources and Configurations
 
-    InvokeBuild                  = 'latest'
+    InvokeBuild                  = '5.8.4'
     # Build and test automation in PowerShell
 
     Pester                       = '4.10.1'
@@ -55,6 +55,12 @@
     # -------------------------------------------------------------------------
     # DSC Resources
     # -------------------------------------------------------------------------
+
+    xIISMachineKey               = '1.0.0.1'
+    # Manage iis MachineKey
+
+    xPSDesiredStateConfiguration = '9.1.0'
+    # DSC resources for configuring common operating systems features, files and settings.
     
     xWebAdministration           = '3.2.0'
     # Module with DSC Resources for Web Administration

@@ -13,7 +13,8 @@ configuration WebApplications {
             $item.Ensure = 'Present'
         }
 
-        $executionName = $item.Name
+        $executionName = "$($item.Name -replace '[-().:\s]', '_')"
+        
         (Get-DscSplattedResource -ResourceName xWebApplication -ExecutionName $executionName -Properties $item -NoInvoke).Invoke($item)
     }
 }

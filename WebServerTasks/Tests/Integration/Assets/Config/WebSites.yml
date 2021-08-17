@@ -1,5 +1,18 @@
 Items:
-  - Name: TestSite1
-    ApplicationPool: TestAppPool1
-  - Name: TestSite2
-    ApplicationPool: TestAppPool2
+  - Name: Default Web Site
+    PhysicalPath: 'C:\inetpub\wwwroot'
+    State: Started
+    BindingInfo:
+      - Protocol: http
+        IPAddress: '*'
+        Port: 80
+      - Protocol: https
+        IPAddress: '*'
+        Port: 443
+        SslFlags: 1
+    ApplicationPool: DefaultAppPool
+    EnabledProtocols: http
+    ServerAutoStart: true
+    PreloadEnabled: true
+    AuthenticationInfo:
+      Windows: true

@@ -12,7 +12,7 @@
     # RootModule = ''
 
     # Version number of this module.
-    ModuleVersion        = '0.5.0'
+    ModuleVersion        = '2021.8.0'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -104,7 +104,7 @@
             ProjectUri                 = 'https://prod1gitlab.mapcom.local/dsc/configurations/WebServerTasks.git'
 
             # A URL to an icon representing this module.
-            IconUri = 'https://dsccommunity.org/images/DSC_Logo_300p.png'
+            IconUri                    = 'https://dsccommunity.org/images/DSC_Logo_300p.png'
 
             # ReleaseNotes of this module
             # ReleaseNotes = ''
@@ -113,7 +113,7 @@
             # Prerelease = ''
 
             # Flag to indicate whether the module requires explicit user acceptance for install/update/save
-            RequireLicenseAcceptance = $false
+            RequireLicenseAcceptance   = $false
 
             # External dependent modules of this module
             ExternalModuleDependencies = 'PSDesiredStateConfiguration'
@@ -129,4 +129,3 @@
     # DefaultCommandPrefix = ''
 
 }
-

@@ -13,7 +13,8 @@ configuration WebApplicationPools {
             $item.Ensure = 'Present'
         }
 
-        $executionName = $item.Name
+        $executionName = "$($item.Name -replace '[-().:\s]', '_')"
+        
         (Get-DscSplattedResource -ResourceName xWebAppPool -ExecutionName $executionName -Properties $item -NoInvoke).Invoke($item)
     }
 }
