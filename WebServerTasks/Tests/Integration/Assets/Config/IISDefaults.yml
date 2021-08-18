@@ -1,0 +1,37 @@
+# WebSites
+#
+# Manages the default properties for all web sites on an IIS web server.
+WebSites:
+  # LogFormat
+  #
+  # Format of the Logfiles. NoteOnly W3C supports LogFlags.
+  # The acceptable values for this property are: IIS, W3C, NCSA, Custom
+  LogFormat: IIS
+  # LogDirectory
+  #
+  # Directory for IIS logs.
+  LogDirectory: C:\inetpub\logs\LogFiles
+  # TraceLogDirectory
+  #
+  # Directory for FREB (Failed Request Tracing) logs.
+  TraceLogDirectory: C:\inetpub\logs\FailedReqLogFiles
+  # DefaultApplicationPool
+  #
+  # Name of the default application pool used by websites.
+  DefaultApplicationPool: DefaultAppPool
+  # AllowSubDirConfig
+  #
+  # Should IIS look for config files in subdirectories, either true or false.
+  AllowSubDirConfig: 'true'
+# WebApplicationPools
+#
+# Manages the default settings for all web application pools on an IIS web server.
+WebApplicationPools:
+  # ManagedRunTimeVersion
+  #
+  # CLR Version
+  ManagedRunTimeVersion: v4.0
+  # IdentityType
+  #
+  #
+  IdentityType: ApplicationPoolIdentity

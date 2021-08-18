@@ -1,18 +1,21 @@
 <#
     .DESCRIPTION
-
+        Manages SSL settings for IIS web sites on a target node.
 #>
 #Requires -Module xPSDesiredStateConfiguration
 #Requires -Module xWebAdministration
 
 
-configuration WebApplications {
-    param (
-        [Parameter(Mandatory)]
+configuration WebSiteSslSettings
+{
+    param
+    (
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
         [System.Collections.Hashtable[]]
-        $Items
+        $Items 
     )
-    
+
     <#
         Import required modules
     #>
@@ -34,43 +37,34 @@ configuration WebApplications {
         DependsOn = '[xWindowsFeature]AddWebServer'
     }
 
-
     <#
-        Create DSC resource for each web application
+        Create DSC resource for Web Site SSL settings
     #>
     foreach ($i in $Items)
     {
-        
         # remove case sensitivity of ordered Dictionary or Hashtables
         $i = @{ } + $i
-    
+
         # if not specified, ensure 'Present'
-        if (-not $i.ContainsKey('Ensure'))
+        if ($null -eq $i.Ensure)
         {
             $i.Ensure = 'Present'
         }
 
-        # enumerate each Authentication Info Resource
-        if ($i.AuthenticationInfo)
-        {
-            $i.AuthenticationInfo = MSFT_xWebApplicationAuthenticationInformation {
-                Anonymous = $i.AuthenticationInfo.Anonymous
-                Basic     = $i.AuthenticationInfo.Basic
-                Digest    = $i.AuthenticationInfo.Digest
-                Windows   = $i.AuthenticationInfo.Windows
-            }
-        } #end if
-        
+        # this resource depends on Windows Feature
+        $i.DependsOn = '[xWindowsFeature]AddWebServer'
+
         # create execution name for the resource
         $executionName = "$($i.Name -replace '[-().:\s]', '_')"
 
+
         # create DSC resource
         $Splatting = @{
-            ResourceName  = 'xWebApplication'
+            ResourceName  = 'xSslSettings'
             ExecutionName = $executionName
             Properties    = $i
             NoInvoke      = $true
         }
         (Get-DscSplattedResource @Splatting).Invoke($i)
-    }
-}
+    } #end foreach
+} #end configuration

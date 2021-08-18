@@ -1,0 +1,14 @@
+Items:
+    # Name
+    #
+    # The Name of website in which to modify the SSL Settings
+  - Name: Default Web Site
+    # Bindings
+    #
+    # The SSL bindings to implement.
+    # Accepted values include: 'Ssl', 'SslNegotiateCert', 'SslRequireCert', 'Ssl128'
+    Bindings:
+      - Ssl
+      - SslNegotiateCert
+      - SslRequireCert
+    Ensure: Present
