@@ -1,0 +1,29 @@
+# MachineFeatures
+#
+# IIS configuration section overrides at the machine-level
+Machine:
+  # Sections
+  #
+  # Specifies a list of IIS configuration sections to lock or unlock.
+  Sections:
+  - Filter: /system.webserver/serverRuntime
+    OverrideMode: Allow
+
+  - Filter: /system.webserver/security/authentication/anonymousAuthentication
+    OverrideMode: Allow
+
+  - Filter: /system.web/sessionState
+    OverrideMode: Allow
+
+# ModuleFeatures
+#
+# Specify a list of IIS module paths to override configuration sections.
+Modules:
+- Path: IIS:\Sites\Default Web Site 
+  Sections:
+  - Filter: /system.webserver/serverRuntime
+    OverrideMode: Allow
+  - Filter: /system.webserver/security/authentication/anonymousAuthentication
+    OverrideMode: Allow
+  - Filter: /system.web/sessionState
+    OverrideMode: Allow
